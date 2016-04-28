@@ -155,6 +155,7 @@ public class XRecyclerView extends RecyclerView {
 
     public void setEmptyView(View emptyView) {
         this.mEmptyView = emptyView;
+        addHeaderView(emptyView);
         mDataObserver.onChanged();
     }
 
@@ -290,21 +291,11 @@ public class XRecyclerView extends RecyclerView {
     private final RecyclerView.AdapterDataObserver mDataObserver = new RecyclerView.AdapterDataObserver() {
         @Override
         public void onChanged() {
-            Adapter<?> adapter = getAdapter();
-            if (adapter != null && mEmptyView != null) {
-                int emptyCount = 0;
-                if (pullRefreshEnabled) {
-                    emptyCount++;
-                }
-                if (loadingMoreEnabled) {
-                    emptyCount++;
-                }
-                if (adapter.getItemCount() == emptyCount) {
+            if (mEmptyView != null) {
+                if (mAdapter == null || mAdapter.getItemCount() == 0) {
                     mEmptyView.setVisibility(View.VISIBLE);
-                    XRecyclerView.this.setVisibility(View.GONE);
                 } else {
                     mEmptyView.setVisibility(View.GONE);
-                    XRecyclerView.this.setVisibility(View.VISIBLE);
                 }
             }
             if (mWrapAdapter != null) {

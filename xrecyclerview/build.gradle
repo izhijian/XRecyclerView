@@ -2,11 +2,10 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "1.2.6"
-group = "com.jcodecraeer"
+group = "io.zhijian"
 
-def siteUrl = 'https://github.com/jianghejie/XRecyclerView'
-def gitUrl = 'https://github.com/jianghejie/XRecyclerView.git'
+def siteUrl = 'https://github.com/izhijian/XRecyclerView'
+def gitUrl = 'https://github.com/izhijian/XRecyclerView.git'
 
 android {
     compileSdkVersion 23
@@ -23,6 +22,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    lintOptions {
+        abortOnError false
     }
 }
 
@@ -50,9 +53,9 @@ install {
                 }
                 developers {
                     developer {
-                        id 'jianghejie'        //填写的一些基本信息
-                        name 'jianghejie'
-                        email 'jianghejie888@gmail.com'
+                        id 'zhijian'        //填写的一些基本信息
+                        name 'zhijian'
+                        email 'mailzz@163.com'
                     }
                 }
                 scm {
@@ -95,3 +98,4 @@ bintray {
         publish = true
     }
 }
+
